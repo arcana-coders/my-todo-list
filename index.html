@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Productividad</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TodoList">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons (opcionales, pero recomendados) -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <h1>Mi Productividad</h1>
+                <p id="current-date"></p>
+            </div>
+            <div class="header-controls">
+                <button id="dark-mode-toggle">🌙</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="task-list"></div>
+        <div id="stats-container">
+            <section id="stats">
+                <div class="stats-header">
+                    <h2>📊 Estadísticas y Análisis</h2>
+                    <button id="export-csv" class="action-btn secondary" title="Exportar Estadísticas">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Exportar CSV
+                    </button>
+                </div>
+                <div id="stats-content"></div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>Hecho con ♥ para la claridad.</p>
+    </footer>
+    <script src="storage.js"></script>
+    <script src="stats.js"></script>
+    <script src="ui.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+
+    <div id="modal-overlay" class="hidden"></div>
+</body>
+</html>
