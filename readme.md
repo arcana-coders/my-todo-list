@@ -3,7 +3,7 @@
 
 ### 🔹 PROYECTO 2: APP DE HÁBITOS PERSONALES (LO QUE NECESITO DISEÑAR)
 
-Quiero una app **sencilla, sin backend, basada en localStorage**, que me ayude a construir hábitos con disciplina real, sin culpa ni arrastre.
+Es una app **sencilla, sin backend, basada en localStorage**, que me ayude a construir hábitos con disciplina real, sin culpa ni arrastre.
 
 #### 🎯 Filosofía central:
 > “Hoy es un nuevo día. Lo que no hice ayer… no importa. Hoy decido qué hacer.  
@@ -103,23 +103,3 @@ No quiero motivación.
 Quiero **claridad**.
 
 ---
-
-### 🛠️ Tu tarea:
-1. Diseña el **modelo de datos JSON** que represente esta estructura (incluyendo frecuencias, historial, subtareas, etc.).
-2. Describe la **lógica de validación**:  
-   - ¿Cómo sabes si una tarea está disponible hoy?  
-   - ¿Cómo actualizas el estado cuando cambia el día?  
-   - ¿Cómo calculas las estadísticas semanales/mensuales?
-3. Propón una **UI simple en texto** (wireframe en palabras): cómo se vería el panel al abrir la app.
-4. Identifica los **3 riesgos técnicos más críticos** (ej: corrupción de localStorage, errores de fecha, inconsistencias en el historial).
-5. Propón **3 mejoras concretas, implementables en menos de 2 días**, que elevarán esta app de “útil” a “legendaria”.
-6. Finalmente, responde con honestidad absoluta:
-> “¿Esta app cumplirá exactamente con lo que quiero?  
-> ¿Me ayudará a construir hábitos reales, sin culpa ni arrastre?  
-> ¿La usaría yo mismo?”
-
-No me digas “es posible”.  
-Dime **cómo lo harías**.  
-Con claridad.  
-Con precisión.  
-Sin jerga innecesaria.
