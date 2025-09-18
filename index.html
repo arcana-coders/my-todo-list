@@ -37,12 +37,23 @@
             <section id="stats">
                 <div class="stats-header">
                     <h2>📊 Estadísticas y Análisis</h2>
-                    <button id="export-csv" class="action-btn secondary" title="Exportar Estadísticas">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
-                        Exportar CSV
-                    </button>
+                    <div class="stats-controls">
+                        <div class="period-selector">
+                            <label for="period-filter">Período:</label>
+                            <select id="period-filter" class="action-btn secondary">
+                                <option value="today">Hoy</option>
+                                <option value="yesterday">Ayer</option>
+                                <option value="week">Esta Semana</option>
+                                <option value="month">Este Mes</option>
+                            </select>
+                        </div>
+                        <button id="export-csv" class="action-btn secondary" title="Exportar Estadísticas">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                            </svg>
+                            Exportar CSV
+                        </button>
+                    </div>
                 </div>
                 <div id="stats-content"></div>
             </section>

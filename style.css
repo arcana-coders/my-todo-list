@@ -586,6 +586,49 @@ main {
     margin-bottom: 0.5rem;
 }
 
+.stats-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.period-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.period-selector label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+#period-filter {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#period-filter:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-tertiary);
+}
+
+#period-filter:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgb(124 58 237 / 0.1);
+}
+
 .stat-card {
     background: var(--bg-tertiary);
     border-radius: var(--radius-lg);
@@ -1179,4 +1222,124 @@ footer {
     color: var(--text-secondary);
     font-style: italic;
     padding: 2rem;
+}
+
+/* Estilos para filtros de período */
+.period-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.period-info h3 {
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.date-range {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Breakdown diario */
+.daily-breakdown {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-light);
+}
+
+.daily-breakdown h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.daily-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.day-card {
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+}
+
+.day-card:hover {
+    background: var(--bg-primary);
+    border-color: var(--accent-primary);
+}
+
+.day-header {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.day-stats {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.day-stats .completed {
+    color: var(--accent-secondary);
+}
+
+.day-stats .separator {
+    color: var(--text-muted);
+    margin: 0 0.25rem;
+}
+
+.day-stats .total {
+    color: var(--text-secondary);
+}
+
+.day-rate {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 768px) {
+    .stats-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+    
+    .period-selector {
+        justify-content: center;
+    }
+    
+    .daily-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .day-card {
+        padding: 0.75rem;
+    }
+    
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }

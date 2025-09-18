@@ -1,3 +1,11 @@
+// Helper function para obtener fecha local en formato YYYY-MM-DD
+function getLocalDateString(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     let appData = loadData();
     // Ensure UI state container to preserve expand/collapse between renders
@@ -42,6 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Event listener para el filtro de período
+    const periodFilter = document.getElementById('period-filter');
+    if (periodFilter) {
+        periodFilter.addEventListener('change', (e) => {
+            const selectedPeriod = e.target.value;
+            renderStats(appData, selectedPeriod);
+        });
+    }
 });
 
 function resetMonthlyHistory(appData) {
@@ -67,7 +84,7 @@ function handleTaskListClick(e, appData) {
     const target = (e.target.closest('.delete-task-btn, .add-task-btn, .edit-task-btn, .delete-theme-btn, .add-subtheme-btn, .edit-theme-btn, .edit-subtheme-btn, .delete-subtheme-btn, .edit-subtask-btn, .delete-subtask-btn')
         || (e.target.matches('input[type="checkbox"][data-subtask-id], input[type="checkbox"][data-task-id]') ? e.target : null)
         || e.target);
-    const today = new Date().toISOString().split('T')[0];
+    const today = getLocalDateString();
 
     if (target.matches('input[type="checkbox"][data-subtask-id]')) {
         const subtaskId = target.dataset.subtaskId;
@@ -701,7 +718,7 @@ function toggleDarkMode(appData) {
 }
 
 function dailyReset(appData) {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getLocalDateString();
     if (appData.lastOpened !== today) {
         appData.themes.forEach(theme => {
             (theme.tasks || []).forEach(task => {

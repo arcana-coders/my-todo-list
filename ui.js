@@ -1,5 +1,13 @@
 const taskListEl = document.getElementById('task-list');
 
+// Helper function para obtener fecha local en formato YYYY-MM-DD
+function getLocalDateString(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 function calculateStreak(task) {
     const history = [...task.history].sort().reverse();
     if (history.length === 0) return 0;
@@ -9,7 +17,7 @@ function calculateStreak(task) {
     let currentDate = new Date(today.getTime());
 
     // Check if today is in history, if so, start streak from today
-    const todayStr = currentDate.toISOString().split('T')[0];
+    const todayStr = getLocalDateString(currentDate);
     if (history[0] === todayStr) {
         streak++;
         currentDate.setDate(currentDate.getDate() - 1);
@@ -17,7 +25,7 @@ function calculateStreak(task) {
 
     // Check for consecutive days before today
     for (let i = streak; i < history.length; i++) {
-        const expectedDateStr = currentDate.toISOString().split('T')[0];
+        const expectedDateStr = getLocalDateString(currentDate);
         if (history[i] === expectedDateStr) {
             streak++;
             currentDate.setDate(currentDate.getDate() - 1);
@@ -30,12 +38,12 @@ function calculateStreak(task) {
     if (streak === 0 && history.length > 0) {
         currentDate = new Date(); // reset to today
         currentDate.setDate(currentDate.getDate() - 1);
-        const yesterdayStr = currentDate.toISOString().split('T')[0];
+        const yesterdayStr = getLocalDateString(currentDate);
         if(history[0] === yesterdayStr) {
             streak++;
             currentDate.setDate(currentDate.getDate() - 1);
             for (let i = 1; i < history.length; i++) {
-                const expectedDateStr = currentDate.toISOString().split('T')[0];
+                const expectedDateStr = getLocalDateString(currentDate);
                 if (history[i] === expectedDateStr) {
                     streak++;
                     currentDate.setDate(currentDate.getDate() - 1);
@@ -51,7 +59,7 @@ function calculateStreak(task) {
 
 function renderUI(appData) {
     taskListEl.innerHTML = ''; // Limpiar la lista actual
-    const today = new Date().toISOString().split('T')[0];
+    const today = getLocalDateString();
 
     // Renderizar cada tema
     appData.themes.forEach(theme => {

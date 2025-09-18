@@ -1,3 +1,11 @@
+// Helper function para obtener fecha local en formato YYYY-MM-DD
+function getLocalDateString(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 const STORAGE_KEY = 'miProductividadData';
 
 function generateId(prefix) {
@@ -74,7 +82,7 @@ function getInitialData() {
                 ],
             },
         ],
-        lastOpened: new Date().toISOString().split('T')[0],
+        lastOpened: getLocalDateString(),
     };
 }
 
@@ -114,7 +122,7 @@ function migrateDataToV2_0(oldData) {
         version: '2.0',
         userPreferences: { darkMode: false },
         themes: [],
-        lastOpened: new Date().toISOString().split('T')[0],
+        lastOpened: getLocalDateString(),
     };
     
     // If there's old data, try to preserve some of it
